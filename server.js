@@ -5,7 +5,7 @@ const {MongoClient, ObjectId } = require('mongodb')
 const { response } = require('express')
 const { request } = require('http')
 require('dotenv').config()
-const PORT = 8000
+const PORT = 3000
 
 let db,
     dbConnectionStr = process.env.DB_STRING,
@@ -39,11 +39,11 @@ app.get("/search", async (request,response) => {
                 }
             }
         ]).toArray()
-        //console.log(result)
+        console.log(result)
         response.send(result)
     } catch (error) {
         response.status(500).send({message: error.message})
-        //console.log(error)
+        console.log(error)
     }
 })
 
