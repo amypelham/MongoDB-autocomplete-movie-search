@@ -5,7 +5,7 @@ const {MongoClient, ObjectId } = require('mongodb')
 const { response } = require('express')
 const { request } = require('http')
 require('dotenv').config()
-const PORT = 3000
+const PORT = 8000
 
 let db,
     dbConnectionStr = process.env.DB_STRING,
@@ -19,10 +19,12 @@ MongoClient.connect(dbConnectionStr)
         collection = db.collection('movies')
     })
 
+//MIDDLEWARE - USE  
 app.use(express.urlencoded({extended : true}))
 app.use(express.json())
 app.use(cors())
 
+//METHODS
 app.get("/search", async (request,response) => {
     try {
         let result = await collection.aggregate([
@@ -32,7 +34,7 @@ app.get("/search", async (request,response) => {
                         "query": `${request.query.query}`,
                         "path": "title",
                         "fuzzy": {
-                            "maxEdits":2,
+                            "maxEdits": 2,
                             "prefixLength": 3
                         }
                     }
