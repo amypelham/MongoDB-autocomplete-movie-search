@@ -1,7 +1,52 @@
-body {
-    margin-left: 3%;
-    margin-top: 2%;
+/* Box Model Hack */
+* {
+    box-sizing: border-box;
+
 }
+
+/* Clear fix hack */
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.clear {
+   clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+body {
+    background-color: white;
+    font-family:  "Raleway", Arial, sans-serif;
+    font-weight: 300;
+    text-align: center;
+    margin: 30px;
+    border-style: solid; 
+    padding: 30px;
+    width: 600px; 
+    align-items: center;
+    justify-content: center; 
+}
+
+h1 {
+    letter-spacing: 6px
+}
+
+p {
+    margin-top: 50px;
+}
+
+ul{
+    list-style-type: none;
+    margin-top: 30px;
+  }
 
 img {
     max-height: 500px;

@@ -34,7 +34,7 @@ app.get("/search", async (request,response) => {
                         "query": `${request.query.query}`,
                         "path": "title",
                         "fuzzy": {
-                            "maxEdits": 2,
+                            "maxEdits":2,
                             "prefixLength": 3
                         }
                     }
@@ -54,9 +54,11 @@ app.get("/get/:id", async (request, response) => {
         let result = await collection.findOne({
             "_id" : ObjectId(request.params.id)
         })
+        console.log(result)
         response.send(result)
     } catch (error) {
         response.status(500).send({message: error.message})
+        console.log(error)
     }
 }
 )
